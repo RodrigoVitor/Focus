@@ -1,0 +1,61 @@
+{
+  "store": [
+    {
+      "id": 1,
+      "name": "Serie",
+      "value": 50
+    },
+    {
+      "id": 2,
+      "name": "Filme",
+      "value": 60
+    },
+    {
+      "id": 3,
+      "name": "30m free",
+      "value": 30
+    },
+    {
+      "id": 4,
+      "name": "1 dia de folga",
+      "value": 200
+    },
+    {
+      "id": 5,
+      "name": "Manha Livre",
+      "value": 70
+    },
+    {
+      "id": 6,
+      "name": "Tarde Livre",
+      "value": 70
+    },
+    {
+      "id": 7,
+      "name": "Noite Livre",
+      "value": 50
+    }
+  ],
+  "gifts": [],
+  "tasks": [
+    {
+      "name": "KULTIVI",
+      "id": 2
+    },
+    {
+      "name": "SQL",
+      "id": 3
+    },
+    {
+      "name": "Python",
+      "id": 4
+    },
+    {
+      "name": "APIs",
+      "id": 5
+    }
+  ],
+  "pontos": {
+    "xp": 10
+  }
+}

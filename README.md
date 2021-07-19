@@ -9,12 +9,14 @@
 ```
     O Usuário pode adicionar quantas tarefas deseja cumprir no dia, quando cumprida, ele marca a opçao feito. 
     Cada tarefa cumprida, são ganho 10xp, no qual você pode usar para adquirir presentes na loja. 
-    Os presentes ja vem definido, você pode mudar acessando o Diretorio db/db.json. Os presentes são como hobby, algo que você gosta de fazer, assim ajudando a você ter um foco
+    Os presentes ja vem definido, você pode mudar acessando o Diretorio db/db.json. 
+    Os presentes são como hobby, algo que você gosta de fazer, assim ajudando a você ter um foco
 ```
 
-## Um pouo mais
+## Um pouco mais
 ```
-    O layot é algo bem simples, este é meu primeiro projeto desenvolvido sem ajuda de um profissional. Você pode estar baixando e fazer as mudanças que desejar.
+    O layot é algo bem simples, este é meu primeiro projeto desenvolvido sem ajuda de um profissional. 
+    Você pode estar baixando e fazer as mudanças que desejar.
 ```
 
 ## Tecnologias usadas

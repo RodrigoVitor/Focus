@@ -25,6 +25,8 @@
 * json-serve
 
 ***
+## Onde vizualizar a interface do projeto?
+* O projeto está disponivel no meu canal no youtube, você pode acessa-lo clicando [aqui](https://youtu.be/dnd-P1HW4Gk).
 
 ## Rodando em minha máquina
 ```

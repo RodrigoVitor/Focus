@@ -5,6 +5,7 @@ import './index.css'
 import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home } from './pages/home/index.tsx'
 import { CreateMyTask } from './pages/addTasks/createMyTask.tsx'
+import { EditMyTask } from './pages/editTask/editMyTask.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         path: "/adicionar-tarefas",
         element: <CreateMyTask />,
       },
+      {
+        path: "/editar-tarefa/:task/:stars",
+        element: <EditMyTask />
+      }
     ]
   }
 ])

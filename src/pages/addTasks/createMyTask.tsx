@@ -1,8 +1,8 @@
 import { Star } from "lucide-react";
 import { useState } from "react";
+import { BoxDefault } from "../../components/boxDefault";
 
 export function CreateMyTask () {
-    const [isStarClick, setIsStarClick] = useState(false)
     const [idStar, setidStar] = useState([0])
 
     const clickStar = 'text-yellow-500 size-8 cursor-pointer'
@@ -54,7 +54,7 @@ export function CreateMyTask () {
 
     return (
         <div className="min-h-screen pb-10 sm:pb-2 pt-10">
-            <div className="w-72 text-center sm:w-9/12 bg-blue-900 mx-auto my-28 py-10 sm:pt-16">
+            <BoxDefault>
                 <input type="text" placeholder="Digite o nome da tarefa" className="bg-blue-900 p-2 outline-none border-b text-zinc-50"/>
                 <div className="mt-5">
                     <span className="text-lg text-zinc-50">Qual a prioridade</span>
@@ -65,7 +65,7 @@ export function CreateMyTask () {
                     </div>
                 </div>
                 <button className="text-zinc-50 bg-slate-900 p-2 rounded-xl sm:text-xl hover:bg-slate-700 mt-5">Adicionar tarefa</button>
-            </div>
+            </BoxDefault>
         </div>
     )
 }

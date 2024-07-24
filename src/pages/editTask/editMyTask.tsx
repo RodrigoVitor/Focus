@@ -17,8 +17,6 @@ export function EditMyTask() {
 
         if (stars)
             setidStar(converterStringParaArray(stars))
-
-        console.log(idStar)
     }, [])
 
     const clickStar = 'text-yellow-500 size-8 cursor-pointer'
@@ -44,7 +42,6 @@ export function EditMyTask() {
             }
             return
         }
-
 
         // Change color star when to click
         switch (positionStar) {

@@ -5,7 +5,7 @@ export function Gifts() {
     return (
         <div className="min-h-screen pb-10 sm:pb-2 pt-10 flex flex-col justify-center items-center">
            <div className=" text-center mt-10">
-            <Link to="/adicionar-tarefas" className="text-zinc-50 bg-blue-900 p-2 rounded-xl sm:text-xl hover:bg-slate-700 ">Adicionar nova tarefa</Link>
+            <Link to="/adicionar-presentes" className="text-zinc-50 bg-blue-900 p-2 rounded-xl sm:text-xl hover:bg-slate-700 ">Adicionar novos presentes</Link>
            </div>
 
            <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -21,7 +21,8 @@ export function Gifts() {
                         <span className="text-zinc-50 text-2xl">75 xp</span>
                     </div>
                     <div className="flex justify-end gap-2 mt-4">
-                        <Pencil className="cursor-pointer sm:size-4 text-zinc-50 hover:text-blue-950" />
+                        <Link to={`/editar-presente/1 dia de folga/1,2,3`}><Pencil className="cursor-pointer sm:size-4 text-zinc-50 hover:text-blue-950" /></Link>
+                        
                         <Trash2 className="cursor-pointer sm:size-4 text-zinc-50 hover:text-red-600" />
                     </div>
                 </div>

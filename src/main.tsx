@@ -7,6 +7,9 @@ import { Home } from './pages/home/index.tsx'
 import { CreateMyTask } from './pages/addTasks/createMyTask.tsx'
 import { EditMyTask } from './pages/editTask/editMyTask.tsx'
 import { Gifts } from './pages/gifts/index.tsx'
+import { AddGifts } from './pages/addGifts/index.tsx'
+import { EditGift } from './pages/editGift/index.tsx'
+import { MyGifts } from './pages/myGifts/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,18 @@ const router = createBrowserRouter([
       {
         path:"/presentes",
         element: <Gifts />
+      },
+      {
+        path:"/adicionar-presentes",
+        element: <AddGifts />
+      },
+      {
+        path: "/editar-presente/:gift/:stars",
+        element: <EditGift />
+      },
+      {
+        path: "/meus-presentes",
+        element: <MyGifts />
       }
     ]
   }

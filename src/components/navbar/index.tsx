@@ -19,8 +19,8 @@ export function Navbar( { closeMenu, isMenuOpen, openMenu }: NavbarProps) {
             <div>
                 <ul className="hidden sm:flex gap-6">
                     <li className="text-zinc-50 cursor-pointer hover:text-zinc-400"><Link to="/">Home</Link></li>
-                    <li className="text-zinc-50 cursor-pointer hover:text-zinc-400"><Link to="/">Presentes</Link></li>
-                    <li className="text-zinc-50 cursor-pointer hover:text-zinc-400"><Link to="/">Meus Presentes</Link></li>
+                    <li className="text-zinc-50 cursor-pointer hover:text-zinc-400"><Link to="/presentes">Presentes</Link></li>
+                    <li className="text-zinc-50 cursor-pointer hover:text-zinc-400"><Link to="/meus-presentes">Meus Presentes</Link></li>
                     <span className="text-zinc-400">0 pontos</span>
                 </ul>
 
@@ -34,8 +34,8 @@ export function Navbar( { closeMenu, isMenuOpen, openMenu }: NavbarProps) {
                         {isMenuOpen && (
                             <ul className="absolute bg-blue-900 w-full left-0 p-4 ">
                                 <li className="text-zinc-50 mb-4 hover:text-zinc-300"><Link to="/">Home</Link></li>
-                                <li className="text-zinc-50 mb-4 hover:text-zinc-300"><Link to="/">Presentes</Link></li>
-                                <li className="text-zinc-50 mb-4 hover:text-zinc-300"><Link to="/">Meus Presentes</Link></li>
+                                <li className="text-zinc-50 mb-4 hover:text-zinc-300"><Link to="/presentes">Presentes</Link></li>
+                                <li className="text-zinc-50 mb-4 hover:text-zinc-300"><Link to="/meus-presentes">Meus Presentes</Link></li>
                                 <span className="text-zinc-400">0 pontos</span>
                             </ul>
                         )}

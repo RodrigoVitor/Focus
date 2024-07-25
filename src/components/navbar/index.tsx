@@ -1,5 +1,7 @@
 import { Menu, X } from "lucide-react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
 
 interface NavbarProps {
     isMenuOpen: boolean
@@ -8,7 +10,7 @@ interface NavbarProps {
 }
 
 export function Navbar( { closeMenu, isMenuOpen, openMenu }: NavbarProps) {
-
+    const {score, tasks} = useContext(ThemeContext)!
     return (
         <div className="bg-blue-900 px-14 py-4 flex justify-between items-center fixed w-screen">
             <div>
@@ -21,7 +23,7 @@ export function Navbar( { closeMenu, isMenuOpen, openMenu }: NavbarProps) {
                     <li className="text-zinc-50 cursor-pointer hover:text-zinc-400"><Link to="/">Home</Link></li>
                     <li className="text-zinc-50 cursor-pointer hover:text-zinc-400"><Link to="/presentes">Presentes</Link></li>
                     <li className="text-zinc-50 cursor-pointer hover:text-zinc-400"><Link to="/meus-presentes">Meus Presentes</Link></li>
-                    <span className="text-zinc-400">0 pontos</span>
+                    <span className="text-zinc-400">{score} pontos</span>
                 </ul>
 
                 <div className="block sm:hidden">
@@ -36,7 +38,7 @@ export function Navbar( { closeMenu, isMenuOpen, openMenu }: NavbarProps) {
                                 <li className="text-zinc-50 mb-4 hover:text-zinc-300"><Link to="/">Home</Link></li>
                                 <li className="text-zinc-50 mb-4 hover:text-zinc-300"><Link to="/presentes">Presentes</Link></li>
                                 <li className="text-zinc-50 mb-4 hover:text-zinc-300"><Link to="/meus-presentes">Meus Presentes</Link></li>
-                                <span className="text-zinc-400">0 pontos</span>
+                                <span className="text-zinc-400">{score} pontos</span>
                             </ul>
                         )}
                     </div>

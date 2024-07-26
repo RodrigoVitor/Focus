@@ -1,6 +1,7 @@
 import { Star } from "lucide-react";
 import { useState } from "react";
 import { BoxDefault } from "../../components/boxDefault";
+import { useNavigate } from "react-router-dom";
 
 type idStarType = number[]
 
@@ -12,6 +13,7 @@ type Task = {
 export function CreateMyTask () {
     const [idStar, setidStar] = useState<idStarType>([])
     const [taskInput, setTaskInput] = useState('')
+    const navigate = useNavigate()
 
     const clickStar = 'text-yellow-500 size-8 cursor-pointer'
     const noClickStar = 'text-zinc-500 size-8 cursor-pointer hover:text-yellow-500'
@@ -67,7 +69,7 @@ export function CreateMyTask () {
 
         const taskAlreadyExists = tasks.some(task => task.task === taskInput);
         if (taskAlreadyExists) {
-            console.log('Tarefa já existe. Não será adicionada novamente.');
+            alert('Tarefa já existe. Não será adicionada novamente.');
             return;
         }
 
@@ -82,10 +84,11 @@ export function CreateMyTask () {
         
             // Salva o array atualizado de tarefas de volta no localStorage
             localStorage.setItem('tasks', JSON.stringify(tasks));
-            console.log('Dados salvos no localStorage');
+            alert('Dados salvos com sucesso');
+            navigate('/')
             return
         }
-        console.log('Está faltando dados')
+        alert('Preenche todos os dados')
     
     
     }

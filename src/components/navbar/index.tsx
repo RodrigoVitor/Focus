@@ -10,7 +10,7 @@ interface NavbarProps {
 }
 
 export function Navbar( { closeMenu, isMenuOpen, openMenu }: NavbarProps) {
-    const {score, tasks} = useContext(ThemeContext)!
+    const {score} = useContext(ThemeContext)!
     return (
         <div className="bg-blue-900 px-14 py-4 flex justify-between items-center fixed w-screen">
             <div>

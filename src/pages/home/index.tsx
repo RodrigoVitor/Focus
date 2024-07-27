@@ -4,7 +4,6 @@ import { Tasks } from "./tasks";
 import { ThemeContext } from "../../context/ThemeContext";
 
 export function Home () {
-    const [isThereTasks, setIsthereTasks] = useState(true)
     const {tasks, getTasks} = useContext(ThemeContext)!
 
     useEffect(() => {

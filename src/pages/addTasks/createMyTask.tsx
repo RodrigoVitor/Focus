@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 type idStarType = number[]
 
-type Task = {
+type TaskType = {
     task: string;
     idStart: number[];
 };
@@ -65,7 +65,7 @@ export function CreateMyTask () {
     function saveTasks(taskInput: string, idStar: number[]) {
         // Recupera tarefas existentes do localStorage (se houver)
         const tasksJSON = localStorage.getItem('tasks');
-        const tasks: Task[] = tasksJSON ? JSON.parse(tasksJSON) : [];
+        const tasks: TaskType[] = tasksJSON ? JSON.parse(tasksJSON) : [];
 
         const taskAlreadyExists = tasks.some(task => task.task === taskInput);
         if (taskAlreadyExists) {
@@ -75,7 +75,7 @@ export function CreateMyTask () {
 
         if(taskInput && idStar.length > 0) {
             // Cria um novo objeto de tarefa
-            const newTask: Task = {
+            const newTask: TaskType = {
                 task: taskInput,
                 idStart: idStar
             };

@@ -3,7 +3,9 @@ import React, {createContext, useState } from 'react'
 type ThemeContextType = {
     score: number
     tasks: string[]
+    gifts: string[]
     getTasks: () => void
+    getGifts: () => void
 }
 
 type Props = {
@@ -15,6 +17,7 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
 export const ThemeProvider = ({children}: Props) => {
     const [score, setScore] = useState(0)
     const [tasks, setTasks] = useState<string[]>([])
+    const [gifts, setGifts] = useState<string[]>([])
 
     function getTasks() {
         const tasksStr = localStorage.getItem('tasks')!
@@ -23,8 +26,14 @@ export const ThemeProvider = ({children}: Props) => {
         console.log(tasks)
     }
 
+    function getGifts() {
+        const giftStr = localStorage.getItem('gifts')!
+        const myGifts = JSON.parse(giftStr)
+        setGifts(myGifts)
+    }
+
     return (
-        <ThemeContext.Provider value={{score, tasks, getTasks}}>
+        <ThemeContext.Provider value={{score, tasks, gifts, getGifts, getTasks}}>
             {children}
         </ThemeContext.Provider>
     )

@@ -12,13 +12,15 @@ export function CardGift({ gifts }: CardGiftProps) {
                 <div>
                     <div className="w-48 text-center bg-blue-900 mt-10 mb-4 py-4">
                         <div className="flex justify-center gap-4">
-                            <Star className="text-yellow-500" />
-                            <Star className="text-yellow-500" />
-                            <Star className="text-yellow-500" />
+                            {g.idStar.map(i => (
+                                <>
+                                   <Star className="text-yellow-500" /> 
+                                </>
+                            ))}
                         </div>
                         <div className="flex flex-col mt-3">
-                            <span className="text-zinc-400">1 dia de folga</span>
-                            <span className="text-zinc-50 text-2xl">75 xp</span>
+                            <span className="text-zinc-400">{g.gift}</span>
+                            <span className="text-zinc-50 text-2xl">{g.xp} xp</span>
                         </div>
                         <div className="flex justify-end gap-2 mt-4">
                             <Link to={`/editar-presente/1 dia de folga/1,2,3`}><Pencil className="cursor-pointer sm:size-4 text-zinc-50 hover:text-blue-950" /></Link>

@@ -7,7 +7,8 @@ type idStarType = number[]
 
 type GiftType = {
     gift:string
-    idStar: number[]
+    idStar: number[],
+    xp: number
 }
 
 export function AddGifts () {
@@ -75,13 +76,33 @@ export function AddGifts () {
 
         if(giftInput && idStar.length > 0) {
             // Cria um novo objeto de gifts
-            const newGift: GiftType = {
-                gift: giftInput,
-                idStar: idStar
+            switch(idStar.length) {
+                case 3:
+                    const newGift3: GiftType = {
+                        gift: giftInput,
+                        idStar: idStar,
+                        xp: 75
+                    }
+                    gifts.push(newGift3);
+                    break
+                case 2:
+                    const newGift2: GiftType = {
+                        gift: giftInput,
+                        idStar: idStar,
+                        xp: 50
+                    }
+                    gifts.push(newGift2);
+                    break
+                default:
+                    const newGift: GiftType = {
+                        gift: giftInput,
+                        idStar: idStar,
+                        xp: 15
+                    }
+                    gifts.push(newGift);
+
             }
-            // Adiciona o novo gift ao array de gifts
-            gifts.push(newGift);
-        
+
             // Salva o array atualizado de gift de volta no localStorage
             localStorage.setItem('gifts', JSON.stringify(gifts));
             alert('Dados salvos com sucesso');

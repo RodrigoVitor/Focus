@@ -1,14 +1,16 @@
 import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BoxDefault } from "../../components/boxDefault";
 
 export function EditMyTask() {
-    type idStarTate = number[]
+    type idStarType = number[]
 
-    const [idStar, setidStar] = useState<idStarTate>([])
+    const [idStar, setidStar] = useState<idStarType>([])
     const { task } = useParams()
+    const [myTask, setMyTask] = useState(task)
     const { stars } = useParams<{ stars: string }>()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const converterStringParaArray = (parametro: string): number[] => {
@@ -27,7 +29,7 @@ export function EditMyTask() {
         if (idStar.includes(positionStar)) {
             switch (positionStar) {
                 case 1:
-                    setidStar([0])
+                    setidStar([])
                     break
                 case 2:
                     if (idStar.includes(1)) {
@@ -65,11 +67,36 @@ export function EditMyTask() {
         }
     }
 
+    function editTask (myTask: string, idStar: number[]) {
+
+        let data = JSON.parse(localStorage.getItem('tasks')!)
+        if(myTask && idStar.length > 0) {
+            data.map((d: any) => {
+                if (d.task == task) {
+                    d.task = myTask
+                    d.idStart = 0
+                    d.idStart = idStar
+                    localStorage.setItem('tasks', JSON.stringify(data))
+                }
+            })
+            navigate('/')
+            return;
+        }
+        alert('Preenche todos os dados')
+
+    }
+
     return (
         <div className="min-h-screen pb-10 sm:pb-2 pt-10">
             <BoxDefault>
                 <h2 className="text-zinc-50 text-3xl mb-7">Editar</h2>
-                <input type="text" value={task} placeholder="Digite o nome da tarefa" className="bg-blue-900 p-2 outline-none border-b text-zinc-50" />
+                <input 
+                    type="text"
+                    placeholder="Digite o nome da tarefa" 
+                    className="bg-blue-900 p-2 outline-none border-b text-zinc-50" 
+                    onChange={(e) => setMyTask(e.target.value)}
+                    value={myTask}
+                />
                 <div className="mt-5">
                     <span className="text-lg text-zinc-50">Qual a prioridade</span>
                     <div className="flex justify-center mt-5 gap-4">
@@ -78,7 +105,12 @@ export function EditMyTask() {
                         <Star id="3" onClick={() => clickStartTrue(3)} className={idStar.includes(1) && idStar.includes(2) && idStar.includes(3) ? clickStar : noClickStar} />
                     </div>
                 </div>
-                <button className="text-zinc-50 bg-slate-900 p-2 rounded-xl sm:text-xl hover:bg-slate-700 mt-5">Editar tarefa</button>
+                <button 
+                    className="text-zinc-50 bg-slate-900 p-2 rounded-xl sm:text-xl hover:bg-slate-700 mt-5"
+                    onClick={() => editTask(myTask!, idStar)}
+                >
+                    Editar tarefa
+                </button>
             </BoxDefault>
         </div>
     )

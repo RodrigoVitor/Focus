@@ -6,6 +6,7 @@ type ThemeContextType = {
     gifts: string[]
     getTasks: () => void
     getGifts: () => void
+    setMyScore: (xp: number) => void
 }
 
 type Props = {
@@ -23,7 +24,6 @@ export const ThemeProvider = ({children}: Props) => {
         const tasksStr = localStorage.getItem('tasks')!
         const myTasks = JSON.parse(tasksStr)
         setTasks(myTasks)
-        console.log(tasks)
     }
 
     function getGifts() {
@@ -32,8 +32,14 @@ export const ThemeProvider = ({children}: Props) => {
         setGifts(myGifts)
     }
 
+    function setMyScore(xp:number) {
+        let value = score
+        xp += value
+        setScore(xp)
+    }
+
     return (
-        <ThemeContext.Provider value={{score, tasks, gifts, getGifts, getTasks}}>
+        <ThemeContext.Provider value={{score, tasks, gifts, getGifts, getTasks, setMyScore}}>
             {children}
         </ThemeContext.Provider>
     )

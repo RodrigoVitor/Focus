@@ -41,12 +41,11 @@ export function Tasks({tasks}: TasksProps) {
         // alert(`A tarefa ${task} foi deletado com sucesso`)
 
         // location.reload()
-
     }
 
-    useEffect(() => {
-        localStorage.setItem('xp', String(score))
-    }, [score])
+    // useEffect(() => {
+    //     localStorage.setItem('xp', String(score))
+    // }, [score])
     
     return (
         <div className="px-4 sm:px-20 mt-10">

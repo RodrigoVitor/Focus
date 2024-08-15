@@ -7,6 +7,7 @@ type ThemeContextType = {
     getTasks: () => void
     getGifts: () => void
     setMyScore: (xp: number) => void
+    getScore: () => void
 }
 
 type Props = {
@@ -16,7 +17,7 @@ type Props = {
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export const ThemeProvider = ({children}: Props) => {
-    const [score, setScore] = useState(0)
+    const [score, setScore] = useState<number>(0)
     const [tasks, setTasks] = useState<string[]>([])
     const [gifts, setGifts] = useState<string[]>([])
 
@@ -33,13 +34,18 @@ export const ThemeProvider = ({children}: Props) => {
     }
 
     function setMyScore(xp:number) {
-        let value = score
+        let value = Number(score)
         xp += value
         setScore(xp)
+        localStorage.setItem('xp', String(xp))
+    }
+    function getScore() {
+        let myXp = localStorage.getItem('xp')
+        setScore(Number(myXp))
     }
 
     return (
-        <ThemeContext.Provider value={{score, tasks, gifts, getGifts, getTasks, setMyScore}}>
+        <ThemeContext.Provider value={{score, tasks, gifts,getScore, getGifts, getTasks, setMyScore}}>
             {children}
         </ThemeContext.Provider>
     )

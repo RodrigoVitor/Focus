@@ -4,10 +4,11 @@ import { Tasks } from "./tasks";
 import { ThemeContext } from "../../context/ThemeContext";
 
 export function Home () {
-    const {tasks, getTasks} = useContext(ThemeContext)!
+    const {tasks, getTasks, getScore} = useContext(ThemeContext)!
 
     useEffect(() => {
         getTasks()
+        getScore()
     }, [])
 
     return (

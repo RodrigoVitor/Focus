@@ -7,6 +7,7 @@ type ThemeContextType = {
     getTasks: () => void
     getGifts: () => void
     setMyScore: (xp: number) => void
+    setLessMyScore: (xp: number) => void
     getScore: () => void
 }
 
@@ -39,13 +40,19 @@ export const ThemeProvider = ({children}: Props) => {
         setScore(xp)
         localStorage.setItem('xp', String(xp))
     }
+    function setLessMyScore(xp:number) {
+        let value = Number(score)
+        xp = value - xp
+        setScore(xp)
+        localStorage.setItem('xp', String(xp))
+    }
     function getScore() {
         let myXp = localStorage.getItem('xp')
         setScore(Number(myXp))
     }
 
     return (
-        <ThemeContext.Provider value={{score, tasks, gifts,getScore, getGifts, getTasks, setMyScore}}>
+        <ThemeContext.Provider value={{score, tasks, gifts,getScore, getGifts, getTasks, setMyScore, setLessMyScore}}>
             {children}
         </ThemeContext.Provider>
     )

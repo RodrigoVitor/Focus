@@ -9,12 +9,16 @@ interface TasksProps {
 
 export function Tasks({tasks}: TasksProps) {
     const navigate = useNavigate()
-    const {setMyScore, score} = useContext(ThemeContext)!
+    const {setMyScore, score, setLessMyScore} = useContext(ThemeContext)!
 
     function taskChecked (task: string) {
-        //get items and creating a new item
+        //get tasks and creating a new task
         let dataTask = JSON.parse(localStorage.getItem('tasks')!)
         let newTask = dataTask.filter((t: any) => t.task !== task)
+
+        localStorage.setItem('tasks', JSON.stringify(newTask))
+
+        alert(`A tarefa ${task} foi concluido com sucesso`)
 
         //check total stars to earn xp
         let checkedTask = dataTask.filter((t: any) => t.task == task)
@@ -36,16 +40,42 @@ export function Tasks({tasks}: TasksProps) {
                 alert('Erro no servidor')
             
         }
-        // localStorage.setItem('tasks', JSON.stringify(newTask))
 
-        // alert(`A tarefa ${task} foi deletado com sucesso`)
-
-        // location.reload()
+        location.reload()
     }
 
-    // useEffect(() => {
-    //     localStorage.setItem('xp', String(score))
-    // }, [score])
+    function deleteTaskForName(task: string) {
+        //get tasks and deleting a task
+        let dataTask = JSON.parse(localStorage.getItem('tasks')!)
+        let newTask = dataTask.filter((t: any) => t.task !== task)
+
+        localStorage.setItem('tasks', JSON.stringify(newTask))
+
+        alert(`Ah! Que Pena! Você não conseguiu concluir \nA tarefa ${task} foi deletada com sucesso`)
+
+        //check total stars to lost xp
+        let checkedTask = dataTask.filter((t: any) => t.task == task)
+        
+        switch (checkedTask[0].idStart.length) {
+            case 1: 
+                alert('Você perdeu 2xp')
+                setLessMyScore(2)
+                break;
+            case 2: 
+                alert('Você perdeu 4xp')
+                setLessMyScore(4)
+                break;
+            case 3:
+                alert('Você perdeu 6xp')
+                setLessMyScore(6)
+                break
+            default:
+                alert('Erro no servidor')
+            
+        }
+
+        location.reload()
+    }
     
     return (
         <div className="px-4 sm:px-20 mt-10">
@@ -61,8 +91,8 @@ export function Tasks({tasks}: TasksProps) {
                     </div>
                     <div className="flex gap-2">
                         <Link to={`/editar-tarefa/${t.task}/${t.idStart}`}><Pencil className="cursor-pointer hover:text-blue-800" /></Link>
-                        <Check onClick={() => taskChecked(t.task)} className="cursor-pointer hover:text-green-600" />
-                        {/* <Trash2 onClick={() => deleteTaskForName(t.task)} className="cursor-pointer hover:text-red-600" /> */}
+                        <span title="Concluido"><Check onClick={() => taskChecked(t.task)} className="cursor-pointer hover:text-green-600"  /></span>
+                        <span title="Não concluido"><Trash2 onClick={() => deleteTaskForName(t.task)} className="cursor-pointer hover:text-red-600" /></span>
                     </div>
                 </div>
             ))}

@@ -4,12 +4,7 @@ import { Tasks } from "./tasks";
 import { ThemeContext } from "../../context/ThemeContext";
 
 export function Home () {
-    const {tasks, getTasks, getScore} = useContext(ThemeContext)!
-
-    useEffect(() => {
-        getTasks()
-        getScore()
-    }, [])
+    const {tasks} = useContext(ThemeContext)!
 
     return (
         <div className="h-screen pb-10 sm:pb-2 pt-10">

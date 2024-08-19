@@ -1,9 +1,16 @@
 import { Outlet } from 'react-router-dom'
 import { Navbar } from './components/navbar'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { ThemeContext } from './context/ThemeContext'
 
 export default function App () {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const {tasks, getTasks, getScore} = useContext(ThemeContext)!
+
+      useEffect(() => {
+        getTasks()
+        getScore()
+    }, [])
 
     function openMenu() {
         setIsMenuOpen(true)

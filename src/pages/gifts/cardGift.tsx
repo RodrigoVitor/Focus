@@ -5,14 +5,22 @@ interface CardGiftProps {
     gifts: string[]
 }
 
+function deleteMyGift(myGift: string) {
+    let myGifts = JSON.parse(localStorage.getItem('gifts')!)
+    let newGifts = myGifts.filter((g: any) => g.gift !== myGift)
+    localStorage.setItem('gifts', JSON.stringify(newGifts))
+    location.reload()
+
+}
+
 export function CardGift({ gifts }: CardGiftProps) {
     return (
         <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {gifts.map(g => (
+            {gifts.map((g: any) => (
                 <div>
                     <div className="w-48 text-center bg-blue-900 mt-10 mb-4 py-4">
                         <div className="flex justify-center gap-4">
-                            {g.idStar.map(i => (
+                            {g.idStar.map(()=> (
                                 <>
                                    <Star className="text-yellow-500" /> 
                                 </>
@@ -23,9 +31,9 @@ export function CardGift({ gifts }: CardGiftProps) {
                             <span className="text-zinc-50 text-2xl">{g.xp} xp</span>
                         </div>
                         <div className="flex justify-end gap-2 mt-4">
-                            <Link to={`/editar-presente/1 dia de folga/1,2,3`}><Pencil className="cursor-pointer sm:size-4 text-zinc-50 hover:text-blue-950" /></Link>
+                            <Link to={`/editar-presente/${g.gift}/${g.idStar}`}><Pencil className="cursor-pointer sm:size-4 text-zinc-50 hover:text-blue-950" /></Link>
 
-                            <Trash2 className="cursor-pointer sm:size-4 text-zinc-50 hover:text-red-600" />
+                            <Trash2 onClick={() => deleteMyGift(g.gift)} className="cursor-pointer sm:size-4 text-zinc-50 hover:text-red-600" />
                         </div>
                     </div>
                     <button className="text-zinc-50 bg-blue-900 p-2 rounded-xl sm:text-xl hover:bg-slate-700 w-full">Comprar</button>

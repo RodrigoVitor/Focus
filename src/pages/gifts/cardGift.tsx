@@ -13,6 +13,33 @@ function deleteMyGift(myGift: string) {
 
 }
 
+function buyAGift(gift: string) {
+    let xp = localStorage.getItem('xp')
+    let gifts = JSON.parse(localStorage.getItem('gifts')!)
+    let myGifts = JSON.parse(localStorage.getItem('MyGifts')!)
+
+    gifts.map((g: any) => {
+        if (g.gift === gift) {
+            if(xp! >= g.xp ) {
+                let newXp = Number(xp) - g.xp
+                localStorage.setItem('xp', String(newXp))
+                if(!myGifts || myGifts.length < 1 ){
+                    localStorage.setItem('MyGifts', JSON.stringify([g.gift]))
+                }
+                let newMyGifts = g.gift 
+                myGifts.push(newMyGifts)
+                localStorage.setItem('MyGifts', JSON.stringify(myGifts))
+                alert('Parbéns você adquiriu essa recompensa!')
+                location.reload()
+                return
+            }
+            alert('Você não tem xp o suficiente para poder comprar essa recompensa. \nConclui mais tarefas para ganhar xp')
+
+        }
+    })
+    
+}
+
 export function CardGift({ gifts }: CardGiftProps) {
     return (
         <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -36,7 +63,7 @@ export function CardGift({ gifts }: CardGiftProps) {
                             <Trash2 onClick={() => deleteMyGift(g.gift)} className="cursor-pointer sm:size-4 text-zinc-50 hover:text-red-600" />
                         </div>
                     </div>
-                    <button className="text-zinc-50 bg-blue-900 p-2 rounded-xl sm:text-xl hover:bg-slate-700 w-full">Comprar</button>
+                    <button onClick={() => buyAGift(g.gift)} className="text-zinc-50 bg-blue-900 p-2 rounded-xl sm:text-xl hover:bg-slate-700 w-full">Comprar</button>
                 </div>
             ))}
         </div>

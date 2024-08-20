@@ -97,6 +97,7 @@ export function EditGift() {
         }
         alert("preenche todos os dados")
     }
+    
     return (
         <div className="min-h-screen pb-10 sm:pb-2 pt-10">
             <BoxDefault>

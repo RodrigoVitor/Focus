@@ -75,6 +75,20 @@ export function EditGift() {
                     g.gift = myGift
                     g.idStar = 0
                     g.idStar = idStar
+                    switch (idStar.length) {
+                        case 3:
+                            g.xp = 75
+                            break
+                        case 2:
+                            g.xp = 50
+                            break
+                        case 1:
+                            g.xp = 15
+                            break
+                        default:
+                            alert('Error no servidor')
+                            return;
+                    }
                     localStorage.setItem('gifts', JSON.stringify(myGifts))
                 }
             })

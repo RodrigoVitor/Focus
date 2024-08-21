@@ -25,6 +25,9 @@ function buyAGift(gift: string) {
                 localStorage.setItem('xp', String(newXp))
                 if(!myGifts || myGifts.length < 1 ){
                     localStorage.setItem('MyGifts', JSON.stringify([g.gift]))
+                    alert('Parbéns você adquiriu essa recompensa!')
+                    location.reload()
+                    return
                 }
                 let newMyGifts = g.gift 
                 myGifts.push(newMyGifts)

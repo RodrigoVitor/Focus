@@ -20,7 +20,9 @@ export function MyGifts () {
     return (
         <div className="min-h-screen pb-10 sm:pb-2 pt-10 flex flex-col justify-center items-center">
             {gifts ? (
-                <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
+                <>
+                {gifts.length > 0 ? (
+                    <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
                     {gifts.map((g: string, index: number) => (
                         <div key={index} className="text-center">
                                 <div className="w-48 text-center bg-blue-900 mt-10 mb-4 py-4">
@@ -37,6 +39,13 @@ export function MyGifts () {
                             </div>
                         ))}
                 </div>
+                ) : (
+                    <div className="text-center bg-blue-900 mt-10 mb-4 py-4 px-4">
+                    <p className="text-slate-50 text-3xl">Você ainda não tem recompensas adquiridas</p>
+                </div>
+                )}
+                
+                </>
             ) : (
                 <div className="text-center bg-blue-900 mt-10 mb-4 py-4 px-4">
                     <p className="text-slate-50 text-3xl">Você ainda não tem recompensas adquiridas</p>

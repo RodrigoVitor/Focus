@@ -13,7 +13,6 @@ type TaskType = {
 export function CreateMyTask () {
     const [idStar, setidStar] = useState<idStarType>([])
     const [taskInput, setTaskInput] = useState('')
-    const navigate = useNavigate()
 
     const clickStar = 'text-yellow-500 size-8 cursor-pointer'
     const noClickStar = 'text-zinc-500 size-8 cursor-pointer hover:text-yellow-500'
@@ -85,7 +84,7 @@ export function CreateMyTask () {
             // Salva o array atualizado de tarefas de volta no localStorage
             localStorage.setItem('tasks', JSON.stringify(tasks));
             alert('Dados salvos com sucesso');
-            navigate('/')
+            location.href = "/"
             return
         }
         alert('Preenche todos os dados')

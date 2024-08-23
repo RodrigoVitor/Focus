@@ -79,7 +79,7 @@ export function EditMyTask() {
                     localStorage.setItem('tasks', JSON.stringify(data))
                 }
             })
-            navigate('/')
+            location.href = '/'
             return;
         }
         alert('Preenche todos os dados')

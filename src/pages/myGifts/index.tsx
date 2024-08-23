@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react"
 
-type GiftType = string[]
-
 export function MyGifts () {
     const [gifts, setGifts] = useState<string[]>([])
 
@@ -21,7 +19,7 @@ export function MyGifts () {
 
     return (
         <div className="min-h-screen pb-10 sm:pb-2 pt-10 flex flex-col justify-center items-center">
-            {gifts.length > 0 ? (
+            {gifts ? (
                 <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
                     {gifts.map((g: string, index: number) => (
                         <div key={index} className="text-center">

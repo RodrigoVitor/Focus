@@ -21,19 +21,22 @@ function buyAGift(gift: string) {
     gifts.map((g: any) => {
         if (g.gift === gift) {
             if(xp! >= g.xp ) {
-                let MyGiftAlreadyExists = myGifts.some((gift: string) => gift === g.gift )
-                if(MyGiftAlreadyExists) {
-                    alert('Você já adquiriu essa recompensa, conclua para obte-la novamente')
-                    return
-                }
                 let newXp = Number(xp) - g.xp
                 localStorage.setItem('xp', String(newXp))
+
                 if(!myGifts || myGifts.length < 1 ){
                     localStorage.setItem('MyGifts', JSON.stringify([g.gift]))
                     alert('Parbéns você adquiriu essa recompensa!')
                     location.reload()
                     return
                 }
+                
+                let MyGiftAlreadyExists = myGifts.some((gift: string) => gift === g.gift )
+                if(MyGiftAlreadyExists) {
+                    alert('Você já adquiriu essa recompensa, conclua para obte-la novamente')
+                    return
+                }
+
                 let newMyGifts = g.gift 
                 myGifts.push(newMyGifts)
                 localStorage.setItem('MyGifts', JSON.stringify(myGifts))

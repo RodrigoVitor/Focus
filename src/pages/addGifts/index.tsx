@@ -19,7 +19,7 @@ export function AddGifts () {
     const clickStar = 'text-yellow-500 size-8 cursor-pointer'
     const noClickStar = 'text-zinc-500 size-8 cursor-pointer hover:text-yellow-500'
 
-    function clickStartTrue(positionStar: number) {
+    function clickStarTrue(positionStar: number) {
         // Remove color star when to click again
         if (idStar.includes(positionStar)) {
             switch (positionStar) {
@@ -64,7 +64,7 @@ export function AddGifts () {
     }
 
     function saveGift(giftInput: string, idStar: number[]) {
-        // Recupera gifts existentes do localStorage (se houver)
+        // get gifts 
         const giftsJSON = localStorage.getItem('gifts');
         const gifts: GiftType[] = giftsJSON ? JSON.parse(giftsJSON) : [];
 
@@ -75,7 +75,7 @@ export function AddGifts () {
         }
 
         if(giftInput && idStar.length > 0) {
-            // Cria um novo objeto de gifts
+            // Add a new objetc of gifts
             switch(idStar.length) {
                 case 3:
                     const newGift3: GiftType = {
@@ -103,7 +103,7 @@ export function AddGifts () {
 
             }
 
-            // Salva o array atualizado de gift de volta no localStorage
+            // Save a new object
             localStorage.setItem('gifts', JSON.stringify(gifts));
             alert('Dados salvos com sucesso');
             navigate('/presentes')
@@ -126,9 +126,9 @@ export function AddGifts () {
                 <div className="mt-5">
                     <span className="text-lg text-zinc-50">Qual a prioridade</span>
                     <div className="flex justify-center mt-5 gap-4">
-                        <Star id="1" onClick={() => clickStartTrue(1)} className={idStar.includes(1) || idStar.includes(2) ? clickStar : noClickStar}/>
-                        <Star id="2" onClick={() => clickStartTrue(2)} className={idStar.includes(1) && idStar.includes(2) ? clickStar : noClickStar}/>
-                        <Star id="3" onClick={() => clickStartTrue(3)} className={idStar.includes(1) && idStar.includes(2) && idStar.includes(3) ? clickStar : noClickStar}/>
+                        <Star id="1" onClick={() => clickStarTrue(1)} className={idStar.includes(1) || idStar.includes(2) ? clickStar : noClickStar}/>
+                        <Star id="2" onClick={() => clickStarTrue(2)} className={idStar.includes(1) && idStar.includes(2) ? clickStar : noClickStar}/>
+                        <Star id="3" onClick={() => clickStarTrue(3)} className={idStar.includes(1) && idStar.includes(2) && idStar.includes(3) ? clickStar : noClickStar}/>
                     </div>
                 </div>
                 <button 

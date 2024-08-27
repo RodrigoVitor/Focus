@@ -1,7 +1,6 @@
 import { Star } from "lucide-react";
 import { useState } from "react";
 import { BoxDefault } from "../../components/boxDefault";
-import { useNavigate } from "react-router-dom";
 
 type idStarType = number[]
 
@@ -62,7 +61,7 @@ export function CreateMyTask () {
     }
 
     function saveTasks(taskInput: string, idStar: number[]) {
-        // Recupera tarefas existentes do localStorage (se houver)
+        // get tasks in the localstorage
         const tasksJSON = localStorage.getItem('tasks');
         const tasks: TaskType[] = tasksJSON ? JSON.parse(tasksJSON) : [];
 
@@ -73,15 +72,14 @@ export function CreateMyTask () {
         }
 
         if(taskInput && idStar.length > 0) {
-            // Cria um novo objeto de tarefa
+            // create a new task
             const newTask: TaskType = {
                 task: taskInput,
                 idStart: idStar
             };
-            // Adiciona a nova tarefa ao array de tarefas
             tasks.push(newTask);
         
-            // Salva o array atualizado de tarefas de volta no localStorage
+            // Save new task in the local
             localStorage.setItem('tasks', JSON.stringify(tasks));
             alert('Dados salvos com sucesso');
             location.href = "/"

@@ -10,7 +10,6 @@ export function EditMyTask() {
     const { task } = useParams()
     const [myTask, setMyTask] = useState(task)
     const { stars } = useParams<{ stars: string }>()
-    const navigate = useNavigate()
 
     useEffect(() => {
         const converterStringParaArray = (parametro: string): number[] => {

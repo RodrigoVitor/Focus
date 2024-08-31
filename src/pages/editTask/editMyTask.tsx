@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BoxDefault } from "../../components/boxDefault";
 
 export function EditMyTask() {

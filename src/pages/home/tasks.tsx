@@ -8,7 +8,6 @@ interface TasksProps {
 }
 
 export function Tasks({tasks}: TasksProps) {
-    const navigate = useNavigate()
     const {setMyScore, setLessMyScore} = useContext(ThemeContext)!
 
     function taskChecked (task: string) {
@@ -83,7 +82,7 @@ export function Tasks({tasks}: TasksProps) {
                 <div key={index} className="sm:w-full sm:h-10 bg-slate-50 mb-5 flex flex-col sm:flex-row gap-2 py-2 sm:justify-between px-4 items-center">
                     <span className="text-lg">{t.task}</span>
                     <div className="flex gap-2">
-                        {t.idStart.map((i: any) => (
+                        {t.idStart.map(() => (
                             <>
                                 <Star className="text-yellow-500" />
                             </>

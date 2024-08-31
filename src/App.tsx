@@ -5,7 +5,7 @@ import { ThemeContext } from './context/ThemeContext'
 
 export default function App () {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const {tasks, getTasks, getScore} = useContext(ThemeContext)!
+  const { getTasks, getScore} = useContext(ThemeContext)!
 
       useEffect(() => {
         getTasks()

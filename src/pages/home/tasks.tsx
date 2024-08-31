@@ -1,5 +1,5 @@
 import { Check, Pencil, Star, Trash2 } from "lucide-react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
 
@@ -9,7 +9,7 @@ interface TasksProps {
 
 export function Tasks({tasks}: TasksProps) {
     const navigate = useNavigate()
-    const {setMyScore, score, setLessMyScore} = useContext(ThemeContext)!
+    const {setMyScore, setLessMyScore} = useContext(ThemeContext)!
 
     function taskChecked (task: string) {
         //get tasks and creating a new task

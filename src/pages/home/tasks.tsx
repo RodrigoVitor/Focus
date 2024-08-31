@@ -1,6 +1,6 @@
 import { Check, Pencil, Star, Trash2 } from "lucide-react";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
 
 interface TasksProps {

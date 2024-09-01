@@ -22,7 +22,7 @@ function buyAGift(gift: string) {
         if (g.gift === gift) {
             if(xp! >= g.xp ) {
                 //get check if already exists this gift
-                let MyGiftAlreadyExists = myGifts.some((gift: string) => gift === g.gift )
+                let MyGiftAlreadyExists = myGifts?.some((gift: string) => gift === g.gift )
                 if(MyGiftAlreadyExists) {
                     alert('Você já adquiriu essa recompensa, conclua para obte-la novamente')
                     return

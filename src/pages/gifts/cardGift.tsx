@@ -44,7 +44,6 @@ export function CardGift({ gifts }: CardGiftProps) {
                     myGifts.push(newMyGifts)
                     localStorage.setItem('MyGifts', JSON.stringify(myGifts))
                     alert('Parabéns você adquiriu essa recompensa!')
-                    location.href = "/meus-presentes"
                     return
                 }
                 alert('Você não tem xp o suficiente para poder comprar essa recompensa. \nConclui mais tarefas para ganhar xp')

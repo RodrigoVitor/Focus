@@ -14,7 +14,8 @@ export function MyGifts () {
         const myGifts = JSON.parse(localStorage.getItem('MyGifts')!)
         const newGift = myGifts.filter((gift: any) => gift !== myGift )
         localStorage.setItem('MyGifts', JSON.stringify(newGift))
-        location.reload()
+        alert('Concluido com sucesso')
+        location.href = "/"
     }
 
     return (

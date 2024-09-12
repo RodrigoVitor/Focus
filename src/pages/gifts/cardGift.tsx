@@ -5,59 +5,59 @@ interface CardGiftProps {
     gifts: string[]
 }
 
-function deleteMyGift(myGift: string) {
-    let myGifts = JSON.parse(localStorage.getItem('gifts')!)
-    let newGifts = myGifts.filter((g: any) => g.gift !== myGift)
-    localStorage.setItem('gifts', JSON.stringify(newGifts))
-    location.reload()
-
-}
-
-function buyAGift(gift: string) {
-    let xp = localStorage.getItem('xp')
-    let gifts = JSON.parse(localStorage.getItem('gifts')!)
-    let myGifts = JSON.parse(localStorage.getItem('MyGifts')!)
-
-    gifts.map((g: any) => {
-        if (g.gift === gift) {
-            if(xp! >= g.xp ) {
-                //get check if already exists this gift
-                let MyGiftAlreadyExists = myGifts?.some((gift: string) => gift === g.gift )
-                if(MyGiftAlreadyExists) {
-                    alert('Você já adquiriu essa recompensa, conclua para obte-la novamente')
-                    return
-                }
-
-                //add a new gift
-                let newXp = Number(xp) - g.xp
-                localStorage.setItem('xp', String(newXp))
-
-                if(!myGifts || myGifts.length < 1 ){
-                    localStorage.setItem('MyGifts', JSON.stringify([g.gift]))
-                    alert('Parbéns você adquiriu essa recompensa!')
-                    location.reload()
-                    return
-                }
-
-                let newMyGifts = g.gift 
-                myGifts.push(newMyGifts)
-                localStorage.setItem('MyGifts', JSON.stringify(myGifts))
-                alert('Parabéns você adquiriu essa recompensa!')
-                location.reload()
-                return
-            }
-            alert('Você não tem xp o suficiente para poder comprar essa recompensa. \nConclui mais tarefas para ganhar xp')
-
-        }
-    })
-    
-}
-
 export function CardGift({ gifts }: CardGiftProps) {
+    function deleteMyGift(myGift: string) {
+        let myGifts = JSON.parse(localStorage.getItem('gifts')!)
+        let newGifts = myGifts.filter((g: any) => g.gift !== myGift)
+        localStorage.setItem('gifts', JSON.stringify(newGifts))
+        location.reload()
+    
+    }
+    
+    function buyAGift(gift: string) {
+        let xp = localStorage.getItem('xp')
+        let gifts = JSON.parse(localStorage.getItem('gifts')!)
+        let myGifts = JSON.parse(localStorage.getItem('MyGifts')!)
+    
+        gifts.map((g: any) => {
+            if (g.gift === gift) {
+                if(xp! >= g.xp ) {
+                    //get check if already exists this gift
+                    let MyGiftAlreadyExists = myGifts?.some((gift: string) => gift === g.gift )
+                    if(MyGiftAlreadyExists) {
+                        alert('Você já adquiriu essa recompensa, conclua para obte-la novamente')
+                        return
+                    }
+    
+                    //add a new gift
+                    let newXp = Number(xp) - g.xp
+                    localStorage.setItem('xp', String(newXp))
+    
+                    if(!myGifts || myGifts.length < 1 ){
+                        localStorage.setItem('MyGifts', JSON.stringify([g.gift]))
+                        alert('Parbéns você adquiriu essa recompensa!')
+                        location.reload()
+                        return
+                    }
+    
+                    let newMyGifts = g.gift 
+                    myGifts.push(newMyGifts)
+                    localStorage.setItem('MyGifts', JSON.stringify(myGifts))
+                    alert('Parabéns você adquiriu essa recompensa!')
+                    location.href = "/meus-presentes"
+                    return
+                }
+                alert('Você não tem xp o suficiente para poder comprar essa recompensa. \nConclui mais tarefas para ganhar xp')
+    
+            }
+        })
+        
+    }
+
     return (
         <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {gifts.map((g: any) => (
-                <div>
+            {gifts.map((g: any, index:number) => (
+                <div key={index}>
                     <div className="w-48 text-center bg-blue-900 mt-10 mb-4 py-4">
                         <div className="flex justify-center gap-4">
                             {g.idStar.map(()=> (
